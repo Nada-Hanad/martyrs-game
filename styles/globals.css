@@ -2,8 +2,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url("/images/BG.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {
@@ -12,15 +15,13 @@ a {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.cse-logo {
+  position: absolute;
+  top: 50px;
+  right: 50px;
 }
