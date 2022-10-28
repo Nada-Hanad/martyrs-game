@@ -15,13 +15,11 @@
   border-radius: 10px;
   z-index: 1;
   object-fit: fill;
+  box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.566);
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.5);
 }
-.blurBg {
-  filter: blur(25px);
-  position: absolute;
-  top: 180px;
-  z-index: 0;
-}
+
 .input {
   height: 76px;
   width: 1000px;

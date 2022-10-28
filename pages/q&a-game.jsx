@@ -10,6 +10,7 @@ import Image from "next/image";
 import Swal from "sweetalert2";
 import Router from "next/router";
 import Link from "next/link";
+
 export default function QandA() {
   const [swiper, setSwiper] = useState(null);
   const [toDisplay, setToDisplay] = useState({
@@ -37,7 +38,7 @@ export default function QandA() {
       id: "goals",
     },
     {
-      question: "re you considerate of other people’s feelings?",
+      question: "Are you considerate of other people’s feelings?",
       options: ["Yes", "No"],
       id: "considerate",
     },
@@ -247,140 +248,143 @@ export default function QandA() {
   };
 
   return (
-    <div>
+    <>
       <Link href="/game-choice">
         <Image
-          className={styles.backButton}
+          className={styles.back}
           width={100}
           height={100}
           src="/icons/arrow.svg"
-          alt="Icon arrow"
+          alt="back arrow"
         ></Image>
       </Link>
-      <Image
-        className="cse-logo"
-        width={150}
-        height={150}
-        src="/cse-logo.png"
-        alt="CSE LOGO"
-      ></Image>
-      <Swiper
-        onSwiper={(s) => {
-          setSwiper(s);
-        }}
-        className={styles.swiper}
-        allowTouchMove={false}
-      >
-        {questions.map((question, index) => (
-          <SwiperSlide key={index} className={styles.swiperSlide}>
-            <Question
-              question={question.question}
-              options={question.options}
-              setAnswer={setAnswer}
-              answer={answer}
-              id={question.id}
-            />
-            <div className={styles.actions}>
-              <button
-                style={{
-                  visibility: index === 0 ? "hidden" : "visible",
-                }}
-                className={styles.button}
-                onClick={prev}
-              >
-                <Image
-                  className={styles.flip}
-                  width={50}
-                  height={50}
-                  src="/icons/arrow.svg"
-                  alt="Icon arrow"
-                ></Image>
-                <p>Previous</p>
-              </button>
-              <button
-                className={styles.button}
-                onClick={() => {
-                  if (answer[question.id] === "") {
-                    Swal.fire({
-                      title: "You have to give an answer to proceed",
-                      icon: "warning",
-                      confirmButtonText: "Okay",
-                      confirmButtonColor: "#ACDDFB",
-                    });
-                  } else {
-                    if (index === 10) {
-                      console.log(
-                        answers.find((e) => _.isEqual(e.answer, answer))
-                      );
-                      setToDisplay(
-                        answers.find((e) => _.isEqual(e.answer, answer))
-                      );
-                    }
-                    next();
-                  }
-                }}
-              >
-                <p>Next</p>
-                <Image
-                  width={50}
-                  height={50}
-                  src="/icons/arrow.svg"
-                  alt="Icon arrow"
-                ></Image>
-              </button>
-            </div>
-          </SwiperSlide>
-        ))}
-        <SwiperSlide className={styles.swiperSlide}>
-          {toDisplay === undefined ? (
-            <h3 className={styles.notFound}>
-              Oops... no available martyr data matches your enteries!
-            </h3>
-          ) : (
-            <div className={styles.result}>
-              <div className={styles.info}>
-                <h3>{toDisplay.name} </h3>
-                <p>{toDisplay.info}</p>
-                <Image
-                  width={240}
-                  height={240}
-                  className={styles.pictureMar}
-                  src={toDisplay.picture}
-                  alt="Martyr's picture"
-                ></Image>
-              </div>
-            </div>
-          )}
+      <div>
+        <Image
+          className="cse-logo"
+          width={150}
+          height={150}
+          src="/cse-logo.png"
+          alt="CSE LOGO"
+        ></Image>
 
-          <button
-            className={styles.retryButton}
-            onClick={() => {
-              setAnswer({
-                gender: "",
-                help: "",
-                generousity: "",
-                goals: "",
-                considerate: "",
-                busy: "",
-                solving: "",
-                familiarity: "",
-                socialCauses: "",
-                initiative: "",
-                musicAndArts: "",
-              });
-              Router.reload();
-            }}
-          >
-            <p>Retry</p>
-            <Image
-              width={50}
-              height={50}
-              src="/icons/retry.svg"
-              alt="Icon arrow"
-            ></Image>
-          </button>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+        <Swiper
+          onSwiper={(s) => {
+            setSwiper(s);
+          }}
+          className={styles.swiper}
+          allowTouchMove={false}
+        >
+          {questions.map((question, index) => (
+            <SwiperSlide key={index} className={styles.swiperSlide}>
+              <Question
+                question={question.question}
+                options={question.options}
+                setAnswer={setAnswer}
+                answer={answer}
+                id={question.id}
+              />
+              <div className={styles.actions}>
+                <button
+                  style={{
+                    visibility: index === 0 ? "hidden" : "visible",
+                  }}
+                  className={styles.button}
+                  onClick={prev}
+                >
+                  <Image
+                    className={styles.flip}
+                    width={50}
+                    height={50}
+                    src="/icons/arrow.svg"
+                    alt="Icon arrow"
+                  ></Image>
+                  <p>Previous</p>
+                </button>
+                <button
+                  className={styles.button}
+                  onClick={() => {
+                    if (answer[question.id] === "") {
+                      Swal.fire({
+                        title: "You have to give an answer to proceed",
+                        icon: "warning",
+                        confirmButtonText: "Okay",
+                        confirmButtonColor: "#ACDDFB",
+                      });
+                    } else {
+                      if (index === 10) {
+                        console.log(
+                          answers.find((e) => _.isEqual(e.answer, answer))
+                        );
+                        setToDisplay(
+                          answers.find((e) => _.isEqual(e.answer, answer))
+                        );
+                      }
+                      next();
+                    }
+                  }}
+                >
+                  <p>Next</p>
+                  <Image
+                    width={50}
+                    height={50}
+                    src="/icons/arrow.svg"
+                    alt="Icon arrow"
+                  ></Image>
+                </button>
+              </div>
+            </SwiperSlide>
+          ))}
+          <SwiperSlide className={styles.swiperSlide}>
+            {toDisplay === undefined ? (
+              <h3 className={styles.notFound}>
+                Oops... no available martyr data matches your enteries!
+              </h3>
+            ) : (
+              <div className={styles.result}>
+                <div className={styles.info}>
+                  <h3>{toDisplay.name} </h3>
+                  <p>{toDisplay.info}</p>
+                  <Image
+                    width={240}
+                    height={240}
+                    className={styles.pictureMar}
+                    src={toDisplay.picture}
+                    alt="Martyr's picture"
+                  ></Image>
+                </div>
+              </div>
+            )}
+
+            <button
+              className={styles.retryButton}
+              onClick={() => {
+                setAnswer({
+                  gender: "",
+                  help: "",
+                  generousity: "",
+                  goals: "",
+                  considerate: "",
+                  busy: "",
+                  solving: "",
+                  familiarity: "",
+                  socialCauses: "",
+                  initiative: "",
+                  musicAndArts: "",
+                });
+                Router.reload();
+              }}
+            >
+              <p>Retry</p>
+              <Image
+                width={50}
+                height={50}
+                src="/icons/retry.svg"
+                alt="Icon arrow"
+              ></Image>
+            </button>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </>
   );
 }

@@ -126,23 +126,9 @@ export default function PictureGame() {
         src="/cse-logo.png"
         alt="CSE LOGO"
       ></Image>
-      <Link href="/game-choice">
-        <Image
-          className={styles.backButton}
-          width={100}
-          height={100}
-          src="/icons/arrow.svg"
-          alt="Icon arrow"
-        ></Image>
-      </Link>
+
       <div className={styles.imageContainer}></div>
-      <Image
-        className={styles.blurBg}
-        src={current.picture}
-        alt={current.name}
-        height={400}
-        width={400}
-      ></Image>
+
       <Image
         className={styles.picture}
         src={current.picture}
@@ -160,6 +146,15 @@ export default function PictureGame() {
         }}
       />
       <CustomButton onClick={handleValidate} text="Validate" />
+      <Link href="/game-choice">
+        <Image
+          className={styles.backButton}
+          width={100}
+          height={100}
+          src="/icons/arrow.svg"
+          alt="Icon arrow"
+        ></Image>
+      </Link>
     </div>
   );
 }
