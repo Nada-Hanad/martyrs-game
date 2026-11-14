@@ -78,7 +78,7 @@ export default function QandA() {
       name: "Mostefa Benboulaid",
       info: `Mostefa Ben Boulaid (The lion of Aures). He was a founding member of the
       Revolutionary Committee of Unity and Action (CRUA). He became a member of
-      the &quot;Committee of the Six&quot; (the insurgent leaders). During the Algerian war, Ben-
+      the "Committee of the Six" (the insurgent leaders). During the Algerian war, Ben-
       Boulaid was responsible for Area I (Aurès).`,
       picture:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Mustapha_Ben_boulaid.jpg/1280px-Mustapha_Ben_boulaid.jpg",
